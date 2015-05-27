@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 
-# klic z generiraj_promet(izvori, paketi)
-# izvori: stevilo izvorov prometa
-# paketi: stevilo paketov
+# klic z generiraj_promet(n, stpaketov, velikosti)
+# n: stevilo izvorov prometa
+# stpaketov: stevilo paketov
+# velikosti: stevilo razredov velikosti
+
 
 import scipy
 import pylab as P
 
-def generiraj_promet(izvori, paketi):
+def generiraj_promet(n, stpaketov, velikosti):
 
-    n = izvori;   # število izvorov
+    n;       # število izvorov
     s = 1;   # začetno stanje
-    packets = paketi; # število paketov
+    stpaketov; # število paketov
 
     T = scipy.ones((n,n));  # Matrika prehodov stanj
     T = T / n               # enaka verjetnost vseh izvorov
@@ -24,7 +26,7 @@ def generiraj_promet(izvori, paketi):
     state = s;
 
     # Izvajamo korake po verigi
-    for i in range(1, packets+1):
+    for i in range(1, stpaketov+1):
         x = 0;
         u = scipy.random.random(1);
         newState = state;
@@ -36,15 +38,42 @@ def generiraj_promet(izvori, paketi):
                 break;
 
         state = newState;
+        packSize = generiraj_pakete(5)
 
         # return state
 
         count[state] = count[state] + 1;
-        data.append(state+1); #prištejemo 1 ker python stanja šteje od 0 do 5
+        data.append({'vrsta':(state+1),'velikost':packSize}); #prištejemo 1 ker python stanja šteje od 0 do 5
     # print "Kolikokrat je padla posamezna cifra:\n ", count
-    # print "Preračunana verjetnost:\n" , count *100 / packets 
+    # print "Preračunana verjetnost:\n" , count *100 / stpaketov 
     # n, bins, patches = P.hist(data, 50,  histtype='bar')
     # P.grid(True)
     # P.show()
 
     return data
+
+
+
+def generiraj_pakete(maxVelikost):
+    # maxVelikost = 5;   # število razredov velikosti paketov
+
+    # Nastavimo začetno velikost
+    velikost = 1;
+
+    T = scipy.ones((maxVelikost,maxVelikost));  # Matrika prehodov stanj
+    T = T / maxVelikost               # enaka verjetnost vseh velikosti paketov
+
+    # Izvajamo korake po verigi
+    x = 0;
+    u = scipy.random.random(1);
+    novaVelikost = velikost;
+    for j in range(maxVelikost):
+        x = x + T[velikost, j];
+        # print "\nx: ",x, "j:",j, "velikost: ",velikost
+        if (x >= u):
+            novaVelikost = j;
+            break;
+
+    velikost = novaVelikost;
+    # vrnemo velikost paketa klicu funkcije
+    return velikost
