@@ -3,5 +3,9 @@
 
 from generator import generiraj_promet
 
-odgovor = generiraj_promet(9,20)
-print "data: ",odgovor
+vrste = generiraj_promet(3,20)
+print "vrste: ",vrste
+
+paketi = generiraj_promet(5,20)
+print "paket: ",paketi
+

@@ -4,10 +4,10 @@
 # izvori: stevilo izvorov prometa
 # paketi: stevilo paketov
 
+import scipy
+import pylab as P
 
 def generiraj_promet(izvori, paketi):
-    import scipy
-    import pylab as P
 
     n = izvori;   # število izvorov
     s = 1;   # začetno stanje
@@ -15,7 +15,7 @@ def generiraj_promet(izvori, paketi):
 
     T = scipy.ones((n,n));  # Matrika prehodov stanj
     T = T / n               # enaka verjetnost vseh izvorov
-    print T
+    # print T
 
     count = scipy.zeros(n, float); #tu štejemo kolikokrat je padla kaka cifra
     data = []; #tu zabeležimo vsak met (za histogram)
@@ -41,10 +41,10 @@ def generiraj_promet(izvori, paketi):
 
         count[state] = count[state] + 1;
         data.append(state+1); #prištejemo 1 ker python stanja šteje od 0 do 5
-    print "Kolikokrat je padla posamezna cifra:\n ", count
-    print "Preračunana verjetnost:\n" , count *100 / packets 
-    n, bins, patches = P.hist(data, 50,  histtype='bar')
-    P.grid(True)
-    P.show()
+    # print "Kolikokrat je padla posamezna cifra:\n ", count
+    # print "Preračunana verjetnost:\n" , count *100 / packets 
+    # n, bins, patches = P.hist(data, 50,  histtype='bar')
+    # P.grid(True)
+    # P.show()
 
     return data
