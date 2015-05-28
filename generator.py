@@ -14,6 +14,7 @@ def generiraj_promet(n, stpaketov, velikosti):
     n;       # število izvorov
     s = 1;   # začetno stanje
     stpaketov; # število paketov
+    velikosti; #velikost paketov
 
     T = scipy.ones((n,n));  # Matrika prehodov stanj
     T = T / n               # enaka verjetnost vseh izvorov
