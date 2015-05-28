@@ -38,7 +38,7 @@ def generiraj_promet(n, stpaketov, velikosti):
                 break;
 
         state = newState;
-        packSize = generiraj_pakete(5)
+        packSize = generiraj_pakete(velikosti)
 
         # return state
 
