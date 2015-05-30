@@ -1,80 +1,60 @@
 # -*- coding: utf-8 -*-
 
-# klic z generiraj_promet(n, stpaketov, velikosti)
-# n: stevilo izvorov prometa
-# stpaketov: stevilo paketov
-# velikosti: stevilo razredov velikosti
-
-
 import scipy
 import pylab as P
 
-def generiraj_promet(n, stpaketov, velikosti):
+def generiraj_promet(stPaketov, n, velikostiPaketov):
 
-    n;       # število izvorov
-    s = 1;   # začetno stanje
-    stpaketov; # število paketov
-    velikosti; #velikost paketov
+    # n je stevilo izvorov, integer
+    # stPaketov, integer
+    # velikostiPaketov, 1D array
 
-    T = scipy.ones((n,n));  # Matrika prehodov stanj
-    T = T / n               # enaka verjetnost vseh izvorov
-    # print T
+    T = scipy.ones((n, n)) # matrika prehodov stanj, 2D array
+    T = T / n # enaka verjetnost vseh izvorov, matricno deljenje
 
-    count = scipy.zeros(n, float); #tu štejemo kolikokrat je padla kaka cifra
-    data = []; #tu zabeležimo vsak met (za histogram)
+    TT = scipy.ones((len(velikostiPaketov), len(velikostiPaketov)))
+    TT = TT / len(velikostiPaketov)
 
-    # Nastavimo začetno stanje
-    state = s;
+    stanjaPaketov = scipy.ones(n)
 
-    # Izvajamo korake po verigi
-    for i in range(1, stpaketov+1):
-        x = 0;
-        u = scipy.random.random(1);
-        newState = state;
+    data = [] # matrika za return
+    state = 1 # zacetno stanje
+
+    for i in range(stPaketov): # izvajamo korake po verigi
+
+        x = 0
+        u = scipy.random.random(1) # vrne random od 0 do 1
+
         for j in range(n):
-            x = x + T[state, j];
-            # print "\nx: ",x, "j:",j, "state: ",state
+
+            #print "Vrednost x je", x, "| Vrednost v matriki prehodov je", T[state, j]
+
+            x = x + T[state, j]
+
+            #print "Zdaj je x =", x, "ob iteraciji j =", j, "| Random vrne", u, "| state:", state
             if (x >= u):
-                newState = j;
+                #print "Breakam ven"
+                state = j
                 break;
+            # print "Konec iteracije\n"
 
-        state = newState;
-        packSize = generiraj_pakete(velikosti)
+        paket = generiraj_paket(stanjaPaketov[state], TT)
+        paket = velikostiPaketov[paket]
 
-        # return state
-
-        count[state] = count[state] + 1;
-        data.append({'vrsta':(state+1),'velikost':packSize}); #prištejemo 1 ker python stanja šteje od 0 do 5
-    # print "Kolikokrat je padla posamezna cifra:\n ", count
-    # print "Preračunana verjetnost:\n" , count *100 / stpaketov 
-    # n, bins, patches = P.hist(data, 50,  histtype='bar')
-    # P.grid(True)
-    # P.show()
+        # print "Dopisujem novo\n"
+        data.append({'indeks' : i+1, 'buffer' : state+1, 'velikost v kB' : paket}); #prištejemo 1 ker python stanja šteje od 0 do 5
 
     return data
 
 
 
-def generiraj_pakete(maxVelikost):
-    # maxVelikost = 5;   # število razredov velikosti paketov
-
-    # Nastavimo začetno velikost
-    velikost = 1;
-
-    T = scipy.ones((maxVelikost,maxVelikost));  # Matrika prehodov stanj
-    T = T / maxVelikost               # enaka verjetnost vseh velikosti paketov
-
-    # Izvajamo korake po verigi
+def generiraj_paket(state, TT):
     x = 0;
     u = scipy.random.random(1);
-    novaVelikost = velikost;
-    for j in range(maxVelikost):
-        x = x + T[velikost, j];
-        # print "\nx: ",x, "j:",j, "velikost: ",velikost
-        if (x >= u):
-            novaVelikost = j;
-            break;
 
-    velikost = novaVelikost;
-    # vrnemo velikost paketa klicu funkcije
-    return velikost
+    for j in range(len(TT)):
+        x = x + TT[state, j];
+        if (x >= u):
+            state = j;
+            break;
+    return state
