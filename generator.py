@@ -37,9 +37,11 @@ def generiraj_promet(stPaketov, n, velikostiPaketov):
                 state = j
                 break;
             # print "Konec iteracije\n"
-
+            
         paket = generiraj_paket(stanjaPaketov[state], TT)
+        stanjaPaketov[state] = paket
         paket = velikostiPaketov[paket]
+        print stanjaPaketov
 
         # print "Dopisujem novo\n"
         data.append({'indeks' : i+1, 'buffer' : state+1, 'velikost v kB' : paket}); #prištejemo 1 ker python stanja šteje od 0 do 5
