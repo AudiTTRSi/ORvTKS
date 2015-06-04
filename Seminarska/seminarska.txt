@@ -10,6 +10,10 @@
 
 ## izvorne datoteke v jeziku python
 
+Izdelavo projekta smo poenostavili z recikliranjem programske kode z laboratorijskih vaj. Cilj je bil nekakšna združitev predstavljenih mehanizmov z dveh laboratorijskih vaj - markovskih verig in čakalnih vrst.
+
+V eni izmed vaj smo obravnavali markovske verige. Princip delovanja končne markovske verige je podoben delovanju končnih avtomatov, v splošnem pa so lahko neskončne. Najpomembnejša lastnost je, da so brez spomina - to pomeni, da je prehod v novo stanje odvisen le od verjenosti prehoda, ne pa tudi od predhodnih stanj. 
+
 ## izvorne datoteke v jeziku matlab
 
 (## naša izbira orodja, kaj in kako smo delali)
