@@ -1,0 +1,21 @@
+# uvod
+
+# markovske verige
+
+# čakalne vrste
+
+# praktično delo
+
+## problem
+
+## izvorne datoteke v jeziku python
+
+## izvorne datoteke v jeziku matlab
+
+(## naša izbira orodja, kaj in kako smo delali)
+
+## realizacija izvorov z markovskimi verigami
+	problemi, v čem se razlikuje od predloge z vaj: nikoli nimamo dveh paketov v istem času
+	prednosti: lahko poljubno določamo velikosti paketov, generiranje poljubnega števila izvorov
+
+# zaključek: izvedba, kaj smo naredili, možnosti razvoja za naprej
