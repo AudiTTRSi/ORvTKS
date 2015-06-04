@@ -4,13 +4,32 @@
 
 # čakalne vrste
 
+Čakalne vrste srečamo v omrežjih, računalnikih....
+(po wikipediji http://en.wikipedia.org/wiki/Scheduling_(computing)#Scheduling_disciplines)
+Primeri mehanizmov za upravljanje čakalnih vrst:
+FIFO (first in - first out)
+- Najpreprostejši algoritem, algoritem obdela paketo po vrsti, tako kot so prišli v čakalno vrsto
+- Throughput je lahko majhen, ker lahko dolgi paketi/procesi dolgo zadržijo CPU
+- Ker nimamo prioritet, prihaja do zakasnitev 
+
+RR round robin
+- Krajši paketi obdelani hitreje kot pri FIFO, daljši paketi hitreje kot pri SJF
+- SJF (krajši paket/proces prvo)
+- dobri povprečen odzivni čas, čas čakanja odvisen od števila procesov 
+in ne dolžine paketa/procesa
+- ni prioritet 
+
+
+
+
 # praktično delo
 
 ## problem
 
 ## izvorne datoteke v jeziku python
 
-Izdelavo projekta smo poenostavili z recikliranjem programske kode z laboratorijskih vaj. Cilj je bil nekakšna združitev predstavljenih mehanizmov z dveh laboratorijskih vaj - markovskih verig in čakalnih vrst.
+Izdelavo projekta smo poenostavili z recikliranjem programske kode z laboratorijskih vaj. 
+Cilj je bil nekakšna združitev predstavljenih mehanizmov z dveh laboratorijskih vaj - markovskih verig in čakalnih vrst.
 
 V eni izmed vaj smo obravnavali markovske verige. Princip delovanja končne markovske verige je podoben delovanju končnih avtomatov, v splošnem pa so lahko neskončne. Najpomembnejša lastnost je, da so brez spomina - to pomeni, da je prehod v novo stanje odvisen le od verjenosti prehoda, ne pa tudi od predhodnih stanj. 
 
