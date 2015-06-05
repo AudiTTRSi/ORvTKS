@@ -1,6 +1,13 @@
 # uvod
 
+V seminarski nalogi smo obravnavali simulacijo sistema naključnega generiranja paketnega prometa, medpomnjenja in uporabe različnih algoritmov čakalnih vrst za dostavo prometa na cilj.
+Osnovne gradnike sistema smo spoznali že na laboratorijskih vajah, v projektu pa smo nekatere uporabili za drugačne namene.
+
 # markovske verige
+
+Markovske verige so stohastični procesi, ki omogočajo spremljanje sprememb slučajnih spremenljivk skozi čas. Ime so dobile po ruskem matematiku Andreju Markovu, ki se je ukvarjal s slučajnimi procesi brez spomina. To pomeni, da je verjetnost prehoda v naslednje stanje odvisna le od trenutnega stanja, ne pa tudi od predhodnih. 
+
+V telekomunikacijah so najpogosteje uporabljane za analizo stanja komunikacijskega sistema in modliranje ubnašanja uporabnikov, uporabne pa so tudi v računalništvu, fiziki, kemiji, za razpoznavanje govora, v teoriji čakalnih vrst ipd. Tudi Google-ov PageRank algoritem lahko opišemo z markovskimi verigami.
 
 # čakalne vrste
 
