@@ -7,7 +7,7 @@ Osnovne gradnike sistema smo spoznali že na laboratorijskih vajah, v projektu p
 
 Markovske verige so stohastični procesi, ki omogočajo spremljanje sprememb slučajnih spremenljivk skozi čas. Ime so dobile po ruskem matematiku Andreju Markovu, ki se je ukvarjal s slučajnimi procesi brez spomina. To pomeni, da je verjetnost prehoda v naslednje stanje odvisna le od trenutnega stanja, ne pa tudi od predhodnih. 
 
-V telekomunikacijah so najpogosteje uporabljane za analizo stanja komunikacijskega sistema in modliranje ubnašanja uporabnikov, uporabne pa so tudi v računalništvu, fiziki, kemiji, za razpoznavanje govora, v teoriji čakalnih vrst ipd. Tudi Google-ov PageRank algoritem lahko opišemo z markovskimi verigami.
+V telekomunikacijah so najpogosteje uporabljane za analizo stanja komunikacijskega sistema in modeliranje ubnašanja uporabnikov, uporabne pa so tudi v računalništvu, fiziki, kemiji, za razpoznavanje govora, v teoriji čakalnih vrst ipd. Tudi Google-ov PageRank algoritem lahko opišemo z markovskimi verigami.
 
 # čakalne vrste
 
@@ -26,7 +26,9 @@ RR round robin
 in ne dolžine paketa/procesa
 - ni prioritet 
 
-
+FQ
+- v sistemu z s tremi izvori se  pasovna širina razdeli enakomerno na 3 dele.
+- uporabljajo routerji, switch,...
 
 
 # praktično delo
