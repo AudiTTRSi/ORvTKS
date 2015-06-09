@@ -10,10 +10,25 @@ velikost_out_prometa = 20;
 %Lastnosti medpomnilnika - vrste
 buffer_size = 100;
 
-[dohodni_cas,velikost] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-[dohodni_cas2,velikost2] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-[dohodni_cas3,velikost3] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-[dohodni_cas4,velikost4] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
+[dohodni_cas,velikost] = generiraj_izvore(4,10,[1 2 6]);
+
+dohodni_cas1 = dohodni_cas;
+
+dohodni_cas2 = dohodni_cas(2,:);
+dohodni_cas3 = dohodni_cas(3,:);
+dohodni_cas4 = dohodni_cas(4,:);
+dohodni_cas = dohodni_cas(1,:);
+
+velikost1 = velikost;
+velikost2 = velikost(2,:);
+velikost3 = velikost(3,:);
+velikost4 = velikost(4,:);
+velikost = velikost(1,:);
+
+% [dohodni_cas,velikost] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
+% [dohodni_cas2,velikost2] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
+% [dohodni_cas3,velikost3] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
+% [dohodni_cas4,velikost4] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
 
 koncni_cas = max(dohodni_cas)+100;
 izhodni_promet = [];

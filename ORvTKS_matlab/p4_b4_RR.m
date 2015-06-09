@@ -1,7 +1,7 @@
 % Lastnosti vhodnega prometa
-st_paketov = 50;
-povp_cas = 5;
-povp_velikost = 5;
+% st_paketov = 50;
+% povp_cas = 5;
+% povp_velikost = 5;
 
 %Lastnosti izhodnega kanala
 output_tick = 5;
@@ -10,12 +10,16 @@ velikost_out_prometa = 20;
 %Lastnosti medpomnilnika - vrste
 buffer_size = 100;
 
-[dohodni_cas,velikost] = generiraj_izvore(4,50,[1 2 3 4 5 6 7 8 9 10]);
+[dohodni_cas,velikost] = generiraj_izvore(4,200,[1 2 3 4 5 6 7 8 9 10]);
+
+
 
 dohodni_cas2 = dohodni_cas(2,:);
 dohodni_cas3 = dohodni_cas(3,:);
 dohodni_cas4 = dohodni_cas(4,:);
 dohodni_cas = dohodni_cas(1,:);
+
+velikost1 = velikost;
 
 velikost2 = velikost(2,:);
 velikost3 = velikost(3,:);
@@ -84,6 +88,6 @@ narisi_promet(2,dohodni_cas2,velikost2);
 narisi_promet(3,dohodni_cas3,velikost3);
 narisi_promet(4,dohodni_cas4,velikost4);
 narisi_izhodni_promet(5,izhodni_cas,izhodni_promet);
-
+velikost1
     
         
