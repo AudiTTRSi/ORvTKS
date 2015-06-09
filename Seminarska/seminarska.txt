@@ -6,11 +6,15 @@ Osnovne gradnike sistema smo spoznali že na laboratorijskih vajah, v projektu p
 # markovske verige
 
 Markovske verige so stohastični procesi, ki omogočajo spremljanje sprememb slučajnih spremenljivk skozi čas. Ime so dobile po ruskem matematiku Andreju Markovu, ki se je ukvarjal s slučajnimi procesi brez spomina. To pomeni, da je verjetnost prehoda v naslednje stanje odvisna le od trenutnega stanja, ne pa tudi od predhodnih. 
-
 V telekomunikacijah so najpogosteje uporabljane za analizo stanja komunikacijskega sistema in modliranje ubnašanja uporabnikov, uporabne pa so tudi v računalništvu, fiziki, kemiji, za razpoznavanje govora, v teoriji čakalnih vrst ipd. Tudi Google-ov PageRank algoritem lahko opišemo z markovskimi verigami.
-
+V seminarski nalogi smo uporabljali končne markovske verige, ki se delno razlikujejo od splošne oblike. Posebnosti so, da vedno vsebujejo povrnljiva stanja, vsako povrnljivo stanje pa je neničelno, torej ergodijsko.
+Stanje j je dosegljivo, če obstaja pozitivna verjetnost, da po enem ali več korakih pridemo iz stanja i v stanje j. Če sta sranji vzajemno dosegljivi, sta povezani – število korakov za prehod ni nujno v obeh smereh enako.
+Povrnljivost stanja opisuje lastnost, ko se Markovska veriga po poljubnem številu korakov vrne v določeno stanje. Minljivo stanje je stanje, ki ni povrnljivo.
+Stanje je ergodijsko, če je hkrati povrnljivo in pozitivno. Matrika, v kateri so vsa stanja med seboj povezana, neperiodična in povrnljiva, je ergodijska Markovska veriga.
 # čakalne vrste
-
+Čakalne vrste predstavljajo pomemben del skoraj vsakeg telekomunikacijskega sistema. Služijo kot vmesni člen med izvori in ponori in skrbijo za začasno hranjenje podatkov pred obdelavo.
+Najenostavnejši princip delovanja je FCFS oziroma FIFO (ang. First-In-First_out). Prvi prispeli paket bo prvi odposlan v nadaljnjo obdelavo. Problem polne čakalne vrste rešujemo z različnimi algoritmi upravljanja čakalnih vrst – od DropTail (odmetavanje novih paketov, če je vrsta že polna) do RED (ang. Random Early Detection) in WRED (ang. Weighted Random Early Detection), ki omogočata zaznavanje polnjenja vrst in na podlagi tega odločata o prejemanju ali podmetavanju novih paketov.
+Dodeljevanje virov procesom ali določanje vrstnega reda obdelave paketov izvajamo z razvrščevalniki (ang. Scheduler). 
 
 
 Čakalne vrste srečamo v omrežjih, računalnikih....
