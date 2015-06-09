@@ -1,14 +1,14 @@
-function narisi_izhodni_promet(fig,time,input_data)
+function narisi_izhodni_promet(fig,time,input_data,naslov)
 figure(fig);
 clf;
 set(gca,'FontSize',16);
-string = sprintf('Flow # %g',fig);
-title(string);
-xlabel('Time slot');
-ylabel('Pkt Size');
+% string = sprintf('Tok %g',fig);
+title(naslov);
+xlabel('Casovna rezina');
+ylabel('Velikost paketov');
 hold on;
 
-color_v=['r','b','g','k'];
+color_v=['r','g','b','k'];
 
 
 [r,c] = size(time);

@@ -2,13 +2,13 @@ function narisi_promet(fig,time,size2)
 figure(fig);
 clf;
 set(gca,'FontSize',16);
-string = sprintf('Flow # %g',fig);
+string = sprintf('Tok %g',fig);
 title(string);
-xlabel('Time slot');
-ylabel('Pkt Size');
+xlabel('Casovna rezina');
+ylabel('Velikost paketov');
 hold on;
 
-color_vector=['r','b','g','k'];
+color_vector=['r','g','b','k'];
 color=color_vector(fig);
 
 [r,c] = size(time);

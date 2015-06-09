@@ -1,7 +1,8 @@
 % Lastnosti vhodnega prometa
-% st_paketov = 50;
-% povp_cas = 5;
-% povp_velikost = 5;
+stIzvorov = 4;
+stPaketov = 500;
+velikosti_paketov = [1 2 4 8 16];
+
 
 %Lastnosti izhodnega kanala
 output_tick = 5;
@@ -10,28 +11,22 @@ velikost_out_prometa = 20;
 %Lastnosti medpomnilnika - vrste
 buffer_size = 100;
 
-[dohodni_cas,velikost] = generiraj_izvore(4,200,[1 2 3 4 5 6 7 8 9 10]);
+[dohodni_cas,velikost] = generiraj_izvore(stIzvorov, stPaketov, velikosti_paketov);
 
 
 
+dohodni_cas1 = dohodni_cas(1,:);
 dohodni_cas2 = dohodni_cas(2,:);
 dohodni_cas3 = dohodni_cas(3,:);
 dohodni_cas4 = dohodni_cas(4,:);
-dohodni_cas = dohodni_cas(1,:);
 
-velikost1 = velikost;
 
+velikost1 = velikost(1,:);
 velikost2 = velikost(2,:);
 velikost3 = velikost(3,:);
 velikost4 = velikost(4,:);
-velikost = velikost(1,:);
 
-% [dohodni_cas,velikost] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-% [dohodni_cas2,velikost2] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-% [dohodni_cas3,velikost3] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-% [dohodni_cas4,velikost4] = generiraj_prihode(st_paketov,povp_cas,povp_velikost);
-
-koncni_cas = max(dohodni_cas)+100;
+koncni_cas = max(dohodni_cas1)+100;
 izhodni_promet = [];
 izhodni_cas = [];
 
@@ -65,9 +60,9 @@ for k=0:koncni_cas
     end
     
     %polnenje vrst
-    ind = find(dohodni_cas == k);
+    ind = find(dohodni_cas1 == k);
     if ind
-        buff1 = bufferSim(2,buff1,velikost(ind));
+        buff1 = bufferSim(2,buff1,velikost1(ind));
     end
     ind = find(dohodni_cas2 == k);
     if ind
@@ -83,11 +78,10 @@ for k=0:koncni_cas
     end
 end
 
-narisi_promet(1,dohodni_cas,velikost);
+narisi_promet(1,dohodni_cas1,velikost1);
 narisi_promet(2,dohodni_cas2,velikost2);
 narisi_promet(3,dohodni_cas3,velikost3);
 narisi_promet(4,dohodni_cas4,velikost4);
-narisi_izhodni_promet(5,izhodni_cas,izhodni_promet);
-velikost1
+narisi_izhodni_promet(5,izhodni_cas,izhodni_promet,'Round Robin');
     
         
