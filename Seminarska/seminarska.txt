@@ -14,7 +14,15 @@ Stanje je ergodijsko, če je hkrati povrnljivo in pozitivno. Matrika, v kateri s
 # čakalne vrste
 Čakalne vrste predstavljajo pomemben del skoraj vsakeg telekomunikacijskega sistema. Služijo kot vmesni člen med izvori in ponori in skrbijo za začasno hranjenje podatkov pred obdelavo.
 Najenostavnejši princip delovanja je FCFS oziroma FIFO (ang. First-In-First_out). Prvi prispeli paket bo prvi odposlan v nadaljnjo obdelavo. Problem polne čakalne vrste rešujemo z različnimi algoritmi upravljanja čakalnih vrst – od DropTail (odmetavanje novih paketov, če je vrsta že polna) do RED (ang. Random Early Detection) in WRED (ang. Weighted Random Early Detection), ki omogočata zaznavanje polnjenja vrst in na podlagi tega odločata o prejemanju ali podmetavanju novih paketov.
-Dodeljevanje virov procesom ali določanje vrstnega reda obdelave paketov izvajamo z razvrščevalniki (ang. Scheduler). 
+Dodeljevanje virov procesom v operacijskih sistemih ali določanje vrstnega reda obdelave paketov izvajamo z razvrščevalniki (ang. Scheduler). 
+Round Robin
+Algoritem round robin vsaki vrsti določi določeno časovno rezino. Te so enako razdeljene med vse izvore prometa, vendar to ne zagotavlja poštenega dodeljevanja sredstev. Algoritem ne upošteva prioritet ali zasedenosti posameznega medpomnilnika. Tako se bo vrsta z večjo pasovno širino prometa praznila z enako hitrostjo kot vrsta z manšo pasovno širino. 
+Fair queuing
+Ta algoritem dodeli vsakemu kanalu enak delež izhodne pasovne širine. V vsakem trenutku je torej vsem na voljo del izhodne kapacitete. Glavna prednost je preprečevanja zasičenja s paketi iz hitrejšega izvora.
+Vsak kanal dobi kapaciteto R/N, kjer je R izhodna kapaciteta, N pa število kanalov.
+Weighted fair queuing
+Pristopu fair queuing dodamo uteži, ki priredijo večja ali manjšo kapaciteto posameznemu kanalu. Te lahko dodelimo ročno in s tem prioretiziramo promet določenega izvora ali pa uteži dinamično prilagajamo lastnostim vhodnega prometa. Običajen pristop je dodeljevanje večje uteži kanalu z večjim vhodnim prometom. Tako omogočimo enakomernejše praznjenje vhodnih vrst.
+Vsak kanal dobi kapaciteto Wi/(W1 + W2 + … + Wn)*R, kjer je Wi utež kanala i, R pa izhodna kapaciteta.
 
 
 Čakalne vrste srečamo v omrežjih, računalnikih....
@@ -31,28 +39,18 @@ RR round robin
 - dobri povprečen odzivni čas, čas čakanja odvisen od števila procesov 
 in ne dolžine paketa/procesa
 - ni prioritet 
-
-
-
-
 # praktično delo
-
-## problem
-
 Obravnavali smo simulacijo telekomunikacijskega sistema, v katerem promet večih izvorov generiramo z markovsko verigo in ga prek ločenih medpomnilnikov z različnimi algoritmi čakalnih vrst dostavimo na cilj.
-
-
-
-## izvorne datoteke v jeziku python
-
-Izdelavo projekta smo poenostavili z recikliranjem programske kode z laboratorijskih vaj. 
 Cilj je bil nekakšna združitev predstavljenih mehanizmov z dveh laboratorijskih vaj - markovskih verig in čakalnih vrst.
-
 V eni izmed vaj smo obravnavali markovske verige. Princip delovanja končne markovske verige je podoben delovanju končnih avtomatov, v splošnem pa so lahko neskončne. Najpomembnejša lastnost je, da so brez spomina - to pomeni, da je prehod v novo stanje odvisen le od verjenosti prehoda, ne pa tudi od predhodnih stanj. 
 
-## izvorne datoteke v jeziku matlab
+V osmi laboratorijski vaji smo spoznavali čakalne vrste. Simulirali smo štiri naključne izvore prometa, vsakemu dodelili ločen medpomnilnik, nato pa promet z razvrščevalnimi algoritmi dostavili na cilj.
+V okolju Matlabu je to bilo izvedeno z naključnim generatorjem, ki je generiral promet za vsakega izmed izvorov. Tako je vsak izvor ustvaril točno določeno število paketov z enako povprečno zakasnitvijo in enako povprečno velikostjo paketov. Ker je vsak izvor deloval neodvisno, je lahko prišlo do generacije paketov v istem diskretnem času.
 
-(## naša izbira orodja, kaj in kako smo delali)
+V sedmi laboratorijski vaji smo spoznavali Markovske verige. Uporabili smo jih za simulacijo meta poštene in nepoštene igralne kocke. Pri prvi so verjetnosti prehodov med stanji enake, pri nepošteni pa večje za prehod v želeno stanje.
+Podoben pristop smo uporabili v seminarski nalogi, kjer smo z dvema Markovskima verigama generirali podatkovni promet.
+S prvo verigo smo določili izvor prometa – vsako stanje verige predstavlja enega izmed izvorov, teh pa je lahko poljubno mnogo. Po želji lahko nastavljamo tudi verjetnost prehoda v določeno stanje in s tem količino prometa, ki ga določen izvor ustvari.
+Z drugo verigo smo generirali podatkovne pakete. Tudi v tem primeru so vsa stanja oziroma velikosti paketov enako verjetna. Spremembe so mogoče že z vnosom parametrov v funkcijo – za večjo pogostost določene velikosti paketov, lahko želeno velikost večkrat vnesemo v parametre ob klicu funkcije.
 
 ## realizacija izvorov z markovskimi verigami
 	problemi, v čem se razlikuje od predloge z vaj: nikoli nimamo dveh paketov v istem času
